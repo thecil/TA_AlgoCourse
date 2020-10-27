@@ -34,7 +34,7 @@ function newOrder(_amount, _price, _side, _symbol){
   })
   .catch(_err => console.log(_err));
 }
-//newOrder(0.1, 13000, "buy", "btcusd")
+//newOrder(0.2, 13000, "buy", "btcusd")
 
 //Get all trading symbols Ex: "btcusd"
 function getAllSymbols(){
@@ -45,42 +45,44 @@ function getAllSymbols(){
 
 //get market price and data from a symbol Ex: "btcusd"
 function getTicker(_symbol){
-  restClient.getTicker(_symbol)
+  restClient.getTicker({symbol:_symbol})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
 
 //cancel an order by ID
 function cancelOrder(_order_id){
-  restClient.cancelOrder({ _order_id })
+  restClient.cancelOrder({order_id:_order_id})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
 
 //cancel ALL my orders
-function cancelAllActiveOrders(_order_id){
-  restClient.cancelAllActiveOrders({ _order_id })
+function cancelAllActiveOrders(){
+  restClient.cancelAllActiveOrders()
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
 
 //get all my trading active orders
 function getMyActiveOrders(_symbol){
-  restClient.getMyActiveOrders(_symbol)
+  restClient.getMyActiveOrders({symbol:_symbol})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
 
 //get status from an order by ID
 function getMyOrderStatus(_order_id){
-  restClient.getMyOrderStatus(_order_id)
+  restClient.getMyOrderStatus({order_id:_order_id})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
 
 //get Balances
 function getMyAvailableBalances(_symbol){
-  restClient.getMyAvailableBalances(_symbol)
+  restClient.getMyAvailableBalances({symbol:_symbol})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
+
+getMyActiveOrders()
