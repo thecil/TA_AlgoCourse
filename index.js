@@ -3,6 +3,14 @@ const GeminiAPI = require("gemini-api").default;
 const key = "account-5hmfRHz791N4PLpleOmJ";
 const secret = "27sn6asLRQkipgKB68XMBR6QpuTq"
 
+//internal variables for values
+var myOrders = []
+
+function insertOrder(_data){
+  let orderLenght = (myOrders.length)
+  myOrders.push(_data)
+  return(console.log(`Order saved: ${myOrders.length}, ${myOrders[orderLenght].symbol}`))
+}
 const restClient = new GeminiAPI({key, secret, sandbox:true});
 /* @dev Create new trade order
 // _amount, float
@@ -13,11 +21,20 @@ const restClient = new GeminiAPI({key, secret, sandbox:true});
 function newOrder(_amount, _price, _side, _symbol){
   restClient.newOrder({amount:_amount, price:_price, side:_side, symbol:_symbol})
   .then(function(_res){
+    let _orderData = {
+      id:_res.id,
+      symbol:_res.symbol,
+      side:_res.side,
+      time:_res.timestamp,
+      price:_res.price,
+      amount:_res.original_amount
+    }
     console.log(_res)
+    insertOrder(_orderData)
   })
   .catch(_err => console.log(_err));
 }
-newOrder(0.1, 13000, "buy", "btcusd")
+//newOrder(0.1, 13000, "buy", "btcusd")
 
 //Get all trading symbols Ex: "btcusd"
 function getAllSymbols(){
@@ -36,6 +53,13 @@ function getTicker(_symbol){
 //cancel an order by ID
 function cancelOrder(_order_id){
   restClient.cancelOrder({ _order_id })
+  .then(_res => console.log(_res))
+  .catch(_err => console.log(_err));
+}
+
+//cancel ALL my orders
+function cancelAllActiveOrders(_order_id){
+  restClient.cancelAllActiveOrders({ _order_id })
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
