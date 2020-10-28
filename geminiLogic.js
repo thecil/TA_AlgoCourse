@@ -18,11 +18,12 @@ const geminiClient = new GeminiAPI({key, secret, sandbox:true});
 
 
 //GEMINI LOGIC
-/* @dev Create new trade order
-// _amount, float
-// _price, int
-// _side, string
-// _symbol string
+/*
+// @dev Create new trade order
+// @var _amount, float
+// @var _price, int
+// @var _side, string
+// @var _symbol string
 */
 function newOrder(_amount, _price, _side, _symbol){
   geminiClient.newOrder({amount:_amount, price:_price, side:_side, symbol:_symbol})
@@ -40,51 +41,63 @@ function newOrder(_amount, _price, _side, _symbol){
   })
   .catch(_err => console.log(_err));
 }
-//newOrder(0.2, 13000, "buy", "btcusd")
-
+/*
 //Get all trading symbols Ex: "btcusd"
+*/
 function getAllSymbols(){
   geminiClient.getAllSymbols()
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //get market price and data from a symbol Ex: "btcusd"
+// @var _symbol string
+*/
 function getTicker(_symbol){
   geminiClient.getTicker({symbol:_symbol})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //cancel an order by ID
+// @var _order_id, integer
+*/
 function cancelOrder(_order_id){
   geminiClient.cancelOrder({order_id:_order_id})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //cancel ALL my orders
+*/
+
 function cancelAllActiveOrders(){
   geminiClient.cancelAllActiveOrders()
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //get all my trading active orders
+// @var _symbol string
+*/
 function getMyActiveOrders(_symbol){
   geminiClient.getMyActiveOrders({symbol:_symbol})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //get status from an order by ID
+// @var _order_id, integer
+*/
 function getMyOrderStatus(_order_id){
   geminiClient.getMyOrderStatus({order_id:_order_id})
   .then(_res => console.log(_res))
   .catch(_err => console.log(_err));
 }
-
+/*
 //get Balances
+// @var _symbol string
+*/
 function getMyAvailableBalances(_symbol){
   geminiClient.getMyAvailableBalances({symbol:_symbol})
   .then(_res => console.log(_res))

@@ -122,7 +122,7 @@ function topExchangesFull(_fsym, _tsym, _limit){
 */
 function histoDay(_fsym, _tsym){
   CryptoCompareAPI.histoDay(_fsym, _tsym)
-  .then(_res => console.log(_res))
+  .then(_res => console.log(_res.reverse()))
   .catch(_err => console.log(_err));
 }
 /*
@@ -134,7 +134,7 @@ function histoDay(_fsym, _tsym){
 */
 function histoHour(_fsym, _tsym){
   CryptoCompareAPI.histoHour(_fsym, _tsym)
-  .then(_res => console.log(_res))
+  .then(_res => console.log(_res.reverse()))
   .catch(_err => console.log(_err));
 }
 /*
@@ -146,7 +146,7 @@ function histoHour(_fsym, _tsym){
 */
 function histoMinute(_fsym, _tsym){
   CryptoCompareAPI.histoHour(_fsym, _tsym)
-  .then(_res => console.log(_res))
+  .then(_res => console.log(_res.reverse()))
   .catch(_err => console.log(_err));
 }
 module.exports =

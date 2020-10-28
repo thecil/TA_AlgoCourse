@@ -5,10 +5,16 @@ console.log(gemini)
 console.log(cCompare)
 
 /*
-// 100 HOUR MA 
+// 100 HOUR MA
 // 1 get data from CryptoCompare
 // 2 calculate MA from 100 past hours
 // 3 check continuously if price is crossing 100 MA => BUY/SELL/HOLD
 */
 
-//cCompare.getCoinPrice('BTC', ['USD', 'EUR'])
+async function test(){
+  var myTest = []
+  myTest = await cCompare.histoDay('BTC', 'USD')
+  console.log(myTest)
+}
+
+test()
