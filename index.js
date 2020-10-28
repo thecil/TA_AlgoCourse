@@ -1,20 +1,6 @@
 const gemini = require('./geminiLogic') //my gemini module
-const cCompare = require('./ccLogic') //my crypto compare module
-//test modules
-console.log(gemini)
-console.log(cCompare)
+const movingAverage = require('./movingAvg') //my crypto compare module
 
-/*
-// 100 HOUR MA
-// 1 get data from CryptoCompare
-// 2 calculate MA from 100 past hours
-// 3 check continuously if price is crossing 100 MA => BUY/SELL/HOLD
-*/
-
-async function test(){
-  var myTest = []
-  myTest = await cCompare.histoDay('BTC', 'USD')
-  console.log(myTest)
-}
-
-test()
+movingAverage.minutely('BTC', 'USD', 1440)
+movingAverage.hourly('ETH', 'USD', 168)
+movingAverage.daily('EOS', 'USD', 31)

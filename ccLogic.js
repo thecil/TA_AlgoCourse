@@ -12,7 +12,7 @@ CryptoCompareAPI.setApiKey(cryptoCAPIKey)
 function coinList(){
   CryptoCompareAPI.coinList()
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // @dev get price of coin, or multiple prices
@@ -24,7 +24,7 @@ function coinList(){
 function price(_fsym, _tsyms){
   CryptoCompareAPI.price(_fsym, _tsyms)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // @dev Works like price(),
@@ -36,7 +36,7 @@ function price(_fsym, _tsyms){
 function priceMulti(_fsyms, _tsyms){
   CryptoCompareAPI.priceMulti(_fsyms, _tsyms)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get all the current trading info (price, vol, open, high, low, etc.)
@@ -48,7 +48,7 @@ function priceMulti(_fsyms, _tsyms){
 function priceFull(_fsyms, _tsyms){
   CryptoCompareAPI.priceFull(_fsyms, _tsyms)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get the price of any cryptocurrency in any other currency at a given timestamp.
@@ -62,7 +62,7 @@ function priceFull(_fsyms, _tsyms){
 function priceHistorical(_fsym, _tsyms, _time){
   CryptoCompareAPI.priceFull(_fsym, _tsyms, _time)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Compute the current trading info (price, vol, open, high, low etc)
@@ -75,7 +75,7 @@ function priceHistorical(_fsym, _tsyms, _time){
 function generateAvg(_fsym, _tsym, _markets){
   CryptoCompareAPI.generateAvg(_fsym, _tsym, _markets)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get top pairs by volume for a currency.
@@ -86,7 +86,7 @@ function generateAvg(_fsym, _tsym, _markets){
 function topPairs(_fsym, _limit){
   CryptoCompareAPI.topPairs(_fsym, _limit)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get top exchanges by volume for a currency pair.
@@ -98,7 +98,7 @@ function topPairs(_fsym, _limit){
 function topExchanges(_fsym, _tsym, _limit){
   CryptoCompareAPI.topExchanges(_fsyms, _tsym, _limit)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get full data on top exchanges by volume for a currency pair.
@@ -110,7 +110,7 @@ function topExchanges(_fsym, _tsym, _limit){
 function topExchangesFull(_fsym, _tsym, _limit){
   CryptoCompareAPI.topExchangesFull(_fsym, _tsym, _limit)
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 // Get open, high, low, close, volumefrom and volumeto from the
@@ -120,10 +120,12 @@ function topExchangesFull(_fsym, _tsym, _limit){
 // @var fsym (String) From Symbol
 // @var tsym (String) To Symbol
 */
-function histoDay(_fsym, _tsym){
+function histoDay(_fsym, _tsym, callback){
   CryptoCompareAPI.histoDay(_fsym, _tsym)
-  .then(_res => console.log(_res.reverse()))
-  .catch(_err => console.log(_err));
+  .then(_res => {
+    callback(_res)
+  })
+  .catch(console.error);
 }
 /*
 // Get open, high, low, close, volumefrom and volumeto from the
@@ -132,10 +134,12 @@ function histoDay(_fsym, _tsym){
 // @var fsym (String) From Symbol
 // @var tsym (String) To Symbol
 */
-function histoHour(_fsym, _tsym){
+function histoHour(_fsym, _tsym, callback){
   CryptoCompareAPI.histoHour(_fsym, _tsym)
-  .then(_res => console.log(_res.reverse()))
-  .catch(_err => console.log(_err));
+  .then(_res => {
+    callback(_res)
+  })
+  .catch(console.error);
 }
 /*
 // Get open, high, low, close, volumefrom and volumeto from the
@@ -144,10 +148,12 @@ function histoHour(_fsym, _tsym){
 // @var fsym (String) From Symbol
 // @var tsym (String) To Symbol
 */
-function histoMinute(_fsym, _tsym){
-  CryptoCompareAPI.histoHour(_fsym, _tsym)
-  .then(_res => console.log(_res.reverse()))
-  .catch(_err => console.log(_err));
+function histoMinute(_fsym, _tsym, callback){
+  CryptoCompareAPI.histoMinute(_fsym, _tsym)
+  .then(_res => {
+    callback(_res)
+  })
+  .catch(console.error);
 }
 module.exports =
 {

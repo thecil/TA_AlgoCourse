@@ -1,13 +1,20 @@
 
 //internal variables for values
-var myOrders = []
+
 
 function insertOrder(_data){
+  var myOrders = []
   let orderLenght = (myOrders.length)
   myOrders.push(_data)
   return(console.log(`Order saved: ${myOrders.length}, ${myOrders[orderLenght].symbol}`))
+  return myOrders
 }
-
+function getData(_data){
+  let _res = []
+  let _resLength = _res.length
+  _res.push(_data)
+  return _res
+}
 
 
 //GEMINI CONFIG
@@ -39,7 +46,7 @@ function newOrder(_amount, _price, _side, _symbol){
     console.log(_res)
     insertOrder(_orderData)
   })
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //Get all trading symbols Ex: "btcusd"
@@ -47,7 +54,7 @@ function newOrder(_amount, _price, _side, _symbol){
 function getAllSymbols(){
   geminiClient.getAllSymbols()
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //get market price and data from a symbol Ex: "btcusd"
@@ -56,7 +63,7 @@ function getAllSymbols(){
 function getTicker(_symbol){
   geminiClient.getTicker({symbol:_symbol})
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //cancel an order by ID
@@ -65,7 +72,7 @@ function getTicker(_symbol){
 function cancelOrder(_order_id){
   geminiClient.cancelOrder({order_id:_order_id})
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //cancel ALL my orders
@@ -74,7 +81,7 @@ function cancelOrder(_order_id){
 function cancelAllActiveOrders(){
   geminiClient.cancelAllActiveOrders()
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //get all my trading active orders
@@ -83,7 +90,7 @@ function cancelAllActiveOrders(){
 function getMyActiveOrders(_symbol){
   geminiClient.getMyActiveOrders({symbol:_symbol})
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //get status from an order by ID
@@ -92,7 +99,7 @@ function getMyActiveOrders(_symbol){
 function getMyOrderStatus(_order_id){
   geminiClient.getMyOrderStatus({order_id:_order_id})
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 /*
 //get Balances
@@ -101,7 +108,7 @@ function getMyOrderStatus(_order_id){
 function getMyAvailableBalances(_symbol){
   geminiClient.getMyAvailableBalances({symbol:_symbol})
   .then(_res => console.log(_res))
-  .catch(_err => console.log(_err));
+  .catch(console.error);
 }
 
 module.exports =
