@@ -1,22 +1,3 @@
-
-//internal variables for values
-
-
-function insertOrder(_data){
-  var myOrders = []
-  let orderLenght = (myOrders.length)
-  myOrders.push(_data)
-  return(console.log(`Order saved: ${myOrders.length}, ${myOrders[orderLenght].symbol}`))
-  return myOrders
-}
-function getData(_data){
-  let _res = []
-  let _resLength = _res.length
-  _res.push(_data)
-  return _res
-}
-
-
 //GEMINI CONFIG
 const GeminiAPI = require("gemini-api").default;
 const key = "account-5hmfRHz791N4PLpleOmJ";
@@ -32,20 +13,13 @@ const geminiClient = new GeminiAPI({key, secret, sandbox:true});
 // @var _side, string
 // @var _symbol string
 */
-function newOrder(_amount, _price, _side, _symbol){
-  geminiClient.newOrder({amount:_amount, price:_price, side:_side, symbol:_symbol})
-  .then(function(_res){
-    let _orderData = {
-      id:_res.id,
-      symbol:_res.symbol,
-      side:_res.side,
-      time:_res.timestamp,
-      price:_res.price,
-      amount:_res.original_amount
-    }
-    console.log(_res)
-    insertOrder(_orderData)
-  })
+function newOrder(_data){
+  geminiClient.newOrder({amount:_data.amount,
+    price:_data.price,
+    side:_data.side,
+    symbol:_data.symbol,
+    options:_data.options})
+  .then(_res => console.log(_res))
   .catch(console.error);
 }
 /*
@@ -53,7 +27,7 @@ function newOrder(_amount, _price, _side, _symbol){
 */
 function getAllSymbols(){
   geminiClient.getAllSymbols()
-  .then(_res => console.log(_res))
+  .then(_res => {console.log(_res); return _res})
   .catch(console.error);
 }
 /*
@@ -61,7 +35,7 @@ function getAllSymbols(){
 // @var _symbol string
 */
 function getTicker(_symbol){
-  geminiClient.getTicker({symbol:_symbol})
+  geminiClient.getTicker(_symbol)
   .then(_res => console.log(_res))
   .catch(console.error);
 }

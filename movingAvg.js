@@ -13,11 +13,10 @@ async function minutelyMovingAverage(_asset, _pair, _minutes){
     for(let _i = 0; _i < _minutes; _i++){
       _sum += _res[_i].close
     }
-    let _movingAverage = _sum/_minutes
+    let _movingAverage = Math.floor(_sum/_minutes)
     console.log("Pair: ", _asset, "/", _pair)
     console.log("Minutely MA for: ", _minutes, "minutes, is: ", _movingAverage)
   })
-
   return _data
 }
 /*
@@ -34,11 +33,10 @@ async function hourlyMovingAverage(_asset, _pair, _hours){
     for(let _i = 0; _i < _hours; _i++){
       _sum += _res[_i].close
     }
-    let _movingAverage = _sum/_hours
+    let _movingAverage = Math.floor(_sum/_hours)
     console.log("Pair: ", _asset, "/" ,_pair)
     console.log("Hourly MA for: ", _hours, "hours, is: ", _movingAverage)
   })
-
   return _data
 }
 /*
@@ -55,11 +53,11 @@ async function dailyMovingAverage(_asset, _pair, _days){
     for(let _i = 0; _i < _days; _i++){
       _sum += _res[_i].close
     }
-    let _movingAverage = _sum/_days
+    let _movingAverage = Math.floor(_sum/_days)
     console.log("Pair: ", _asset, "/", _pair)
     console.log("Daily MA for: ", _days, "days is: ", _movingAverage)
   })
-  return _data
+  callback(_data)
 }
 module.exports =
 {
