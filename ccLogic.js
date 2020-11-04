@@ -10,8 +10,10 @@ CryptoCompareAPI.setApiKey(cryptoCAPIKey)
 // and the following information about each coin.
 */
 function coinList(){
-  CryptoCompareAPI.coinList()
-  .then(_res => console.log(_res))
+  CryptoCompareAPI.coinList(callback)
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -21,9 +23,11 @@ function coinList(){
 // @var fsym (String) From Symbol
 // @var tsyms (Array of Strings | String) To Symbol(s)
 */
-function price(_fsym, _tsyms){
+function price(_fsym, _tsyms, callback){
   CryptoCompareAPI.price(_fsym, _tsyms)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -33,9 +37,11 @@ function price(_fsym, _tsyms){
 // @var fsyms (String) From Symbol(s)
 // @var tsyms (Array of Strings | String) To Symbol(s)
 */
-function priceMulti(_fsyms, _tsyms){
+function priceMulti(_fsyms, _tsyms, callback){
   CryptoCompareAPI.priceMulti(_fsyms, _tsyms)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -45,9 +51,11 @@ function priceMulti(_fsyms, _tsyms){
 // @var fsyms (String) From Symbol(s)
 // @var tsyms (Array of Strings | String) To Symbol(s)
 */
-function priceFull(_fsyms, _tsyms){
+function priceFull(_fsyms, _tsyms, callback){
   CryptoCompareAPI.priceFull(_fsyms, _tsyms)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -59,9 +67,11 @@ function priceFull(_fsyms, _tsyms){
 // @var tsyms (Array of Strings | String) To Symbol(s)
 // @var time (Date) Date in history that you want price data for
 */
-function priceHistorical(_fsym, _tsyms, _time){
+function priceHistorical(_fsym, _tsyms, _time, callback){
   CryptoCompareAPI.priceFull(_fsym, _tsyms, _time)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -72,9 +82,11 @@ function priceHistorical(_fsym, _tsyms, _time){
 // @var tsyms (Array of Strings | String) To Symbol(s)
 // @var markets (Array) Array of markets to base the average on.
 */
-function generateAvg(_fsym, _tsym, _markets){
+function generateAvg(_fsym, _tsym, _markets, callback){
   CryptoCompareAPI.generateAvg(_fsym, _tsym, _markets)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -83,9 +95,11 @@ function generateAvg(_fsym, _tsym, _markets){
 // @var fsym (String) From Symbol
 // @var limit (Number) Limit the number of pairs you receive (default 5).
 */
-function topPairs(_fsym, _limit){
+function topPairs(_fsym, _limit, callback){
   CryptoCompareAPI.topPairs(_fsym, _limit)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -95,9 +109,11 @@ function topPairs(_fsym, _limit){
 // @var tsym (String) To Symbol
 // @var limit (Number) Limit the number of exchanges you receive (default 5).
 */
-function topExchanges(_fsym, _tsym, _limit){
+function topExchanges(_fsym, _tsym, _limit, callback){
   CryptoCompareAPI.topExchanges(_fsyms, _tsym, _limit)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*
@@ -107,9 +123,11 @@ function topExchanges(_fsym, _tsym, _limit){
 // @var tsym (String) To Symbol
 // @var limit (Number) Limit the number of exchanges you receive (default 5).
 */
-function topExchangesFull(_fsym, _tsym, _limit){
+function topExchangesFull(_fsym, _tsym, _limit, callback){
   CryptoCompareAPI.topExchangesFull(_fsym, _tsym, _limit)
-  .then(_res => console.log(_res))
+  .then(_res => {
+    callback(_res)
+  })
   .catch(console.error);
 }
 /*

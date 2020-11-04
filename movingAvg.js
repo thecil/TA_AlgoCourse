@@ -14,10 +14,8 @@ async function minutelyMovingAverage(_asset, _pair, _minutes){
       _sum += _res[_i].close
     }
     let _movingAverage = Math.floor(_sum/_minutes)
-    console.log("Pair: ", _asset, "/", _pair)
-    console.log("Minutely MA for: ", _minutes, "minutes, is: ", _movingAverage)
+    callback(_movingAverage)
   })
-  return _data
 }
 /*
 // @dev Calculate Hourly Moving Average
@@ -25,7 +23,7 @@ async function minutelyMovingAverage(_asset, _pair, _minutes){
 // @var _pair, string
 // @var _hours, integer
 */
-async function hourlyMovingAverage(_asset, _pair, _hours){
+async function hourlyMovingAverage(_asset, _pair, _hours, callback){
   if(_hours>169){console.log("Only up to 169 hours allowed."); return}
   let _data = await cCompare.histoHour(_asset, _pair, function(_res){
     _res.reverse()
@@ -34,10 +32,9 @@ async function hourlyMovingAverage(_asset, _pair, _hours){
       _sum += _res[_i].close
     }
     let _movingAverage = Math.floor(_sum/_hours)
-    console.log("Pair: ", _asset, "/" ,_pair)
-    console.log("Hourly MA for: ", _hours, "hours, is: ", _movingAverage)
+    callback(_movingAverage)
   })
-  return _data
+
 }
 /*
 // @dev Calculate Daily Moving Average
@@ -45,7 +42,7 @@ async function hourlyMovingAverage(_asset, _pair, _hours){
 // @var _pair, string
 // @var _days, integer
 */
-async function dailyMovingAverage(_asset, _pair, _days){
+async function dailyMovingAverage(_asset, _pair, _days, callback){
   if(_days>31){console.log("Only up to 31 days allowed."); return}
   let _data = await cCompare.histoDay(_asset, _pair, function(_res){
     _res.reverse()
@@ -54,10 +51,8 @@ async function dailyMovingAverage(_asset, _pair, _days){
       _sum += _res[_i].close
     }
     let _movingAverage = Math.floor(_sum/_days)
-    console.log("Pair: ", _asset, "/", _pair)
-    console.log("Daily MA for: ", _days, "days is: ", _movingAverage)
+    callback(_movingAverage)
   })
-  callback(_data)
 }
 module.exports =
 {

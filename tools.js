@@ -1,4 +1,5 @@
 module.exports = {
+  //time usage
   seconds: function(_data){
     return(_data*1000)
   },
@@ -10,18 +11,12 @@ module.exports = {
     let _hour = minute(60);
     return(_data*_hour)
   },
-  defBuyOrder: {
-    amount: 1,
-    price: 13675,
-    side: "buy",
-    symbol: "BTCUSD",
-    options:["immediate-or-cancel"]
-  },
-  defSellOrder: {
-    amount: 10,
-    price: 13500,
-    side: "sell",
-    symbol: "BTCUSD",
+  //default structure of a gemini order
+  defaultOrder: {
+    amount: '',
+    price: '',
+    side: '',
+    symbol: '',
     options:["immediate-or-cancel"]
   }
 }
