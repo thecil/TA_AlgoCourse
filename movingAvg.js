@@ -5,7 +5,7 @@ const cCompare = require('./ccLogic') //my crypto compare module
 // @var _pair, string
 // @var _minutes, integer
 */
-async function minutelyMovingAverage(_asset, _pair, _minutes){
+async function minutelyMovingAverage(_asset, _pair, _minutes, callback){
   if(_minutes>1440){console.log("Only up to 1441 minutes allowed."); return}
   let _data = await cCompare.histoMinute(_asset, _pair, function(_res){
     _res.reverse()
